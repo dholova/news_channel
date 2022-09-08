@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="post">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    {% if post %}
+        <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}" >
+    {% else %}
+        <input type="text" class="form-control" id="title" name="title">
+    {% endif %}
+  </div>
+  <div class="mb-3">
+    <label for="text" class="form-label">Text</label>
+    <textarea class="form-control" id="post-text" name="text" rows="3">
+      {% if post %}
+        {{ post.text }}
+      {% endif %}
+    </textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">
+    {% if post %}
+        Update
+    {% else %}
+        Create
+    {% endif %}
+  </button>
+</form>
+{% endblock %}
